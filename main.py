@@ -3,7 +3,7 @@ import secrets
 import string
 
 
-def generate_password(length=16, nums=1, special_chars=1, uppercase=1, lowercase=1):
+def generate_password(length, nums=1, special_chars=1, uppercase=1, lowercase=1):
     # Define the possible characters for the password
     letters = string.ascii_letters
     digits = string.digits
@@ -33,8 +33,18 @@ def generate_password(length=16, nums=1, special_chars=1, uppercase=1, lowercase
 
 
 def main():
-    new_password = generate_password()
-    print('Generated password:', new_password)
+    while True:
+        length = input('Ingrese longitud de la contraseña (>=5): ')
+        try:
+            length = int(length)
+            if length >=5:
+                new_password = generate_password(length)
+                print('Generated password:', new_password)
+                break
+            else:
+                print(f"Longitud {length} fuera del rango, inténtalo de nuevo")
+        except:
+            print("Entrada inválida")
 
 
 if __name__ == '__main__':
